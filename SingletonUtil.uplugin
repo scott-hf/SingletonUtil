@@ -1,0 +1,32 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.2",
+	"FriendlyName": "SingletonUtil",
+	"Description": "Scott's Simple Plugin For Automatic Singleton Actor Cache & Access",
+	"Category": "Code Plugins",
+	"CreatedBy": "Scott Dunbar",
+	"CreatedByURL": "scottdunbar.io",
+	"DocsURL": "",
+	"SupportURL": "",
+	"MarketplaceURL": "com.epicgames.launcher://ue/Fab/product/2a9ac57d-e42b-404d-bae1-41e20224f365",
+	"EngineVersion": "5.4.0",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SingletonUtil",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen",
+			"PlatformAllowList": [
+				"Win64",
+				"Mac",
+				"Linux",
+				"IOS",
+				"Android"
+			]
+		}
+	]
+}
