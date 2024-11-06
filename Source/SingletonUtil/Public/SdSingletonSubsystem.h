@@ -300,7 +300,7 @@ public:
 	/** 
 	 * Retrieves all classes derived from a given object within the specified outer scope.
 	 * @param Outer - The outer object scope to search within.
-	 * @return An array of UClass pointers representing the derived classes.
+	 * @return An array of UClass representing the derived classes.
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "SingletonUtil")
 	TArray<UClass*> GetDerivedClassesFromObject(UObject* Outer);
@@ -308,7 +308,7 @@ public:
 	/** 
 	 * Retrieves all classes derived from the specified class.
 	 * @param InClass - The base class to find derived classes from.
-	 * @return An array of UClass pointers representing the derived classes.
+	 * @return An array of UClass representing the derived classes.
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "SingletonUtil", DisplayName = "Get Derived Classes From Class", meta = (DeterminesOutputType = InClass))
 	TArray<UClass*> K2_GetDerivedClassesFromClass(TSubclassOf<UObject> InClass);
@@ -373,8 +373,8 @@ public:
 	UObject* K2_GetGlobalObjectInRegistry(TSubclassOf<UObject> InObjectClass, FName InGlobalId = NAME_None);
 
 	/** 
-	 * Checks if a global object represented by a soft class pointer is registered in the global registry.
-	 * @param InObjectClass - The soft class pointer representing the object's class.
+	 * Checks if a global object represented by a soft class is registered in the global registry.
+	 * @param InObjectClass - The soft class representing the object's class.
 	 * @param InGlobalId - Optional ID to identify the specific global object.
 	 * @return True if the object is registered, false otherwise.
 	 */
@@ -386,17 +386,24 @@ public:
 
 	/** 
 	 * Retrieves a snapshot of the current object cache as a map of object names to their instances.
-	 * @return A TMap containing object names as keys and their corresponding UObject pointers as values.
+	 * @return A TMap containing object names as keys and their corresponding UObject as values.
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "SingletonUtil|Debug")
 	TMap<FString, UObject*> DebugGetObjectCacheSnapshot();
 
 	/** 
 	 * Retrieves a snapshot of the current actor cache as a map of class types to actor instances.
-	 * @return A TMap containing UClass pointers as keys and their corresponding AActor pointers as values.
+	 * @return A TMap containing UClass as keys and their corresponding AActor as values.
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "SingletonUtil|Debug")
 	TMap<TSubclassOf<UObject>, AActor*> DebugGetActorCacheSnapshot();
 
+	/** 
+	 * Retrieves a snapshot of the current interface cache as a map of class types to object instances.
+	 * @return A TMap containing SingletonInterfaceHashKeys as keys and their corresponding UObjects as values.
+	 */
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "SingletonUtil|Debug")
+	TMap<FSD_SingletonInterfaceHashKey, UObject*> DebugGetInterfaceCacheSnapshot();
+	
 
 };

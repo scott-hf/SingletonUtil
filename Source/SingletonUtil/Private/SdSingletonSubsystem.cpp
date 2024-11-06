@@ -321,3 +321,14 @@ TMap<TSubclassOf<UObject>, AActor*> USdSingletonSubsystem::DebugGetActorCacheSna
 	}
 	return OutCache;
 }
+
+
+TMap<FSD_SingletonInterfaceHashKey, UObject*> USdSingletonSubsystem::DebugGetInterfaceCacheSnapshot()
+{
+	TMap<FSD_SingletonInterfaceHashKey, UObject*> OutCache;
+	for (auto MapItx : SingletonInterfaceCacheMap)
+	{
+		OutCache.Add(MapItx.Key, MapItx.Value);
+	}
+	return OutCache;
+}
