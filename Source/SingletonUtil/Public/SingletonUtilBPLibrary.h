@@ -35,6 +35,8 @@ public:
 	 * Retrieves the singleton interface instance of a specified class. Assumes only one instance of that interface class exists.
 	 * For more advanced search params, access the singleton subsystem
 	 *
+	 * @param WorldContextObject   The world context object, typically a reference to the current world, used to
+	 *                             determine the scope of the singleton search. Required for Blueprint compatibility.
 	 * @param InClass          The specific interface class to retrieve as a singleton.
 	 * @param OutObject        Output parameter that receives the actual UObject implementing the interface.
 	 *                         Useful if you need direct access to the object itself, not just the "interfaced" object.
