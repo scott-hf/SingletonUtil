@@ -8,6 +8,15 @@ A Blueprint-compatible singleton utility for Unreal Engine, designed to manage a
 - Call singleton interface functions from c++, without caring about BP implementation. IE: set up a c++ interface, create a BP object with that interface in the world, and call it from c++
 - Flexibility for ease of use OR following best practices. Best practices state to de-couple your blueprints and singleton-based interface calls enable that. But if you're just trying to get shit done, call "Get Singleton Actor" - you'll have a direct reference to the actor still, but you won't have to cache it locally in every blueprint that needs to talk to it.
 
+## Blueprint Library Functions
+![image](https://github.com/user-attachments/assets/1b9582c5-505c-4f20-83c3-c313a5453481)
+
+## Advanced Search Parameters for finding your UObject. Usually default search params work but just in case, here are some options
+![image](https://github.com/user-attachments/assets/0671dcee-33a3-4466-90e8-998e2fdeb594)
+
+## All blueprint-exposed functions accessible from SD Singleton Subsystem
+![image](https://github.com/user-attachments/assets/557a52e3-4963-468c-9149-55a947d9e179)
+
 ## Notes
 
 - All C++, nothing in the content folder
