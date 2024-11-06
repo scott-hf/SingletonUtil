@@ -63,6 +63,6 @@ Use `FSD_SingletonSearchParams` for refined search criteria for finding interfac
 - Actor Cache Snapshot: Inspect the current actor cache for debugging.
 - Interface Cache Snapshot: Inspect the current interface cache for debugging.
 
-## License
+## Special Thanks
 
-© 2023-24, Scott Dunbar - Hello Friend LLC. All rights reserved.
+Thank you to avigrail, who helped provided examples on how to declare interface specific return values, among other things
