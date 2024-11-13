@@ -11,9 +11,6 @@ A Blueprint-compatible singleton utility for Unreal Engine, designed to manage a
 ## Blueprint Library Functions
 ![image](https://github.com/user-attachments/assets/1b9582c5-505c-4f20-83c3-c313a5453481)
 
-## Advanced Search Parameters for finding your UObject. Usually default search params work but just in case, here are some options
-![image](https://github.com/user-attachments/assets/0671dcee-33a3-4466-90e8-998e2fdeb594)
-
 ## All blueprint-exposed functions accessible from SD Singleton Subsystem
 ![image](https://github.com/user-attachments/assets/557a52e3-4963-468c-9149-55a947d9e179)
 
@@ -30,6 +27,10 @@ A Blueprint-compatible singleton utility for Unreal Engine, designed to manage a
 - Global UObject Registry: Register and retrieve global UObjects with optional identifiers.
 - Derived Class Caching: Efficiently cache derived classes for retrieval.
 - Debug Tools: Inspect the current state of singleton caches for actors and objects.
+
+
+## [[Advanced]] Search Parameters for finding your UObject. Usually default search params work but just in case, here are some options
+![image](https://github.com/user-attachments/assets/0671dcee-33a3-4466-90e8-998e2fdeb594)
 
 ## Installation
 
