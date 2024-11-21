@@ -1,5 +1,5 @@
 
-# Singleton Util Plugin
+# Singleton Util Plugin - Unreal Engine
 
 A Blueprint-compatible singleton utility for Unreal Engine, designed to manage and retrieve singleton instances of actors, interfaces, and global objects within a project. This plugin provides an efficient way to ensure only one instance of a given actor or interface exists within the world context, with optional caching and customizable search parameters.
 
