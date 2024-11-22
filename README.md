@@ -1,13 +1,13 @@
 
 # Singleton Util Plugin - Unreal Engine
 
-A Blueprint-compatible singleton utility for Unreal Engine, designed to manage and retrieve singleton instances of actors, interfaces, and global objects within a project. This plugin provides an efficient way to retrieve a singleton instance of a given actor or interface.
+A Blueprint-compatible singleton utility plugin for Unreal Engine, designed to cache and retrieve singleton instances of actors, interfaces, and global objects.
 
 ## Blueprint Library Functions
 ![image](https://github.com/user-attachments/assets/1b9582c5-505c-4f20-83c3-c313a5453481)
 
 ## TLDR
-- Call "Get Singleton Interface" to find, cache, and return an Actor or UObject with given interface. This is "best practice" approach
+- Call "Get Singleton Interface" to find, cache, and return an Actor or UObject with given interface. This is "best practice" approach and will remove the hard dependency references between your assets
 - If you don't want to create an interface, you can find, cache, and return an AActor of a given class. This works fine too but will not remove the hard dependency references between your assets ( assuming you are calling this from a blueprint to find another blueprint )
 
 ## Intent
