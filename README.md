@@ -1,15 +1,20 @@
 
 # Singleton Util Plugin - Unreal Engine
 
-A Blueprint-compatible singleton utility for Unreal Engine, designed to manage and retrieve singleton instances of actors, interfaces, and global objects within a project. This plugin provides an efficient way to ensure only one instance of a given actor or interface exists within the world context, with optional caching and customizable search parameters.
+A Blueprint-compatible singleton utility for Unreal Engine, designed to manage and retrieve singleton instances of actors, interfaces, and global objects within a project. This plugin provides an efficient way to retrieve a singleton instance of a given actor or interface.
+
+## Blueprint Library Functions
+![image](https://github.com/user-attachments/assets/1b9582c5-505c-4f20-83c3-c313a5453481)
+
+## TLDR
+- Call "Get Singleton Interface" to find, cache, and return an Actor or UObject with given interface. This is "best practice" approach
+- If you don't want to create an interface, you can find, cache, and return an AActor of a given class. This works fine too but will not remove the hard dependency references between your assets ( assuming you are calling this from a blueprint to find another blueprint )
 
 ## Intent
 - De-couple more, cache easier, and remove clutter from variables in your blueprints - while remaining performant
 - Call singleton interface functions from c++, without caring about BP implementation. IE: set up a c++ interface, create a BP object with that interface in the world, and call it from c++
 - Flexibility for ease of use OR following best practices. Best practices state to de-couple your blueprints and singleton-based interface calls enable that. But if you're just trying to get shit done, call "Get Singleton Actor" - you'll have a direct reference to the actor still, but you won't have to cache it locally in every blueprint that needs to talk to it.
 
-## Blueprint Library Functions
-![image](https://github.com/user-attachments/assets/1b9582c5-505c-4f20-83c3-c313a5453481)
 
 ## All blueprint-exposed functions accessible from SD Singleton Subsystem
 ![image](https://github.com/user-attachments/assets/557a52e3-4963-468c-9149-55a947d9e179)
