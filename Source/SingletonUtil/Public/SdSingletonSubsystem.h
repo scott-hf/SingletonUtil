@@ -50,40 +50,40 @@ public:
 
 	// A string to filter the results by name.
 	// Only objects with names containing this string will be included in the search results.
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "SingletonUtil")
 	FString FilterString;
 
 	// When true, only actors will be included in the search results.
 	// Non-actor objects will be excluded if this is set to true.
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "SingletonUtil")
 	bool bIncludeOnlyActors = false;
 
 	// Used to filter by object class type, NOT by interface class.
 	// Only objects of this specific class or its subclasses will be included in the search results.
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "SingletonUtil")
 	UClass* FilterClass = nullptr;
 
 	// When true, includes default objects (like class default objects) in the search results.
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "SingletonUtil")
 	bool bShouldIncludeDefaultObjects = false;
-
+	 
 	// When true, only default objects (such as class default objects) will be included in the search results.
 	// Non-default objects will be excluded.
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "SingletonUtil")
 	bool bOnlyDefaultObjects = false;
 
 	// When true, only root objects will be included in the search results.
 	// Root objects are those without any outer object.
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "SingletonUtil")
 	bool bOnlyRootObjects = false;
 
 	// When true, only garbage-collectable (GC) objects will be included in the search results.
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "SingletonUtil")
 	bool bOnlyGCObjects = false;
 
 	// When true, includes transient objects in the search results.
 	// Transient objects are those that are not meant to be saved or serialized.
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "SingletonUtil")
 	bool bIncludeTransient = false;
 
 
@@ -139,10 +139,10 @@ struct FSD_SingletonInterfaceHashKey
 
 public:
 	
-    UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly)
+    UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "SingletonUtil")
     FSD_SingletonSearchParams SingletonSearchParams;
 
-    UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly)
+    UPROPERTY(BlueprintReadOnly, VisibleInstanceOnly, Category = "SingletonUtil")
     TSubclassOf<UInterface> InterfaceClass;
 
     // Default constructor
