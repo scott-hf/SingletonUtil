@@ -3,8 +3,11 @@
 
 A blueprint-exposed, C++ only, singleton utility plugin for Unreal Engine, designed to cache and retrieve singleton instances of actors, interfaces, and global objects.
 
-## Blueprint Library Functions
-![image](https://github.com/user-attachments/assets/1b9582c5-505c-4f20-83c3-c313a5453481)
+## Before
+![bulletshooter3](https://github.com/user-attachments/assets/e85660ab-b897-4e5f-a2bd-af755b57b2a0)
+
+## After
+![spawninstance2](https://github.com/user-attachments/assets/8114d828-dbcd-4802-a259-3cff20e36c82)
 
 ## TLDR
 - Call "Get Singleton Interface" to find, cache, and return an Actor or UObject with given interface. This is "best practice" approach and will remove the hard dependency references between your assets
@@ -15,6 +18,9 @@ A blueprint-exposed, C++ only, singleton utility plugin for Unreal Engine, desig
 - Call singleton interface functions from c++, without caring about BP implementation. IE: set up a c++ interface, create a BP object with that interface in the world, and call it from c++
 - Flexibility for ease of use OR following best practices. Best practices state to de-couple your blueprints and singleton-based interface calls enable that. But if you're just trying to get shit done, call "Get Singleton Actor" - you'll have a direct reference to the actor still, but you won't have to cache it locally in every blueprint that needs to talk to it.
 
+
+## Blueprint Library Functions
+![image](https://github.com/user-attachments/assets/1b9582c5-505c-4f20-83c3-c313a5453481)
 
 ## All blueprint-exposed functions accessible from SD Singleton Subsystem
 ![image](https://github.com/user-attachments/assets/557a52e3-4963-468c-9149-55a947d9e179)
