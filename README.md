@@ -1,5 +1,5 @@
 
-# Singleton Util Plugin - Unreal Engine
+# SD Singleton Util UE Plugin -  Destroyer of hard references and "get actor of class"
 
 A blueprint-exposed, C++ only, singleton utility plugin for Unreal Engine, designed to cache and retrieve singleton instances of actors, interfaces, and global objects.
 
