@@ -1,7 +1,7 @@
 
 # Singleton Util Plugin - Unreal Engine
 
-A Blueprint-compatible singleton utility plugin for Unreal Engine, designed to cache and retrieve singleton instances of actors, interfaces, and global objects.
+A blueprint-exposed, C++ only, singleton utility plugin for Unreal Engine, designed to cache and retrieve singleton instances of actors, interfaces, and global objects.
 
 ## Blueprint Library Functions
 ![image](https://github.com/user-attachments/assets/1b9582c5-505c-4f20-83c3-c313a5453481)
