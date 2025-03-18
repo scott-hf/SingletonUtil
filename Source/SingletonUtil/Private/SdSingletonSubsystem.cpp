@@ -83,7 +83,7 @@ TArray<UClass*> USdSingletonSubsystem::K2_GetDerivedClassesFromClass(TSubclassOf
 TScriptInterface<UInterface> USdSingletonSubsystem::K2_GetSingletonInterface(TSubclassOf<UInterface> InInterfaceClass, UObject*& OutObject, const FSD_SingletonSearchParams& SearchParams, bool bIgnoreCache)
 {
 	TScriptInterface<UInterface> OutInterface;
-	
+
 	FSD_SingletonInterfaceHashKey SingletonInterfaceHashKey = FSD_SingletonInterfaceHashKey(InInterfaceClass, SearchParams);
 
 	if (!IsValid(SingletonInterfaceHashKey.InterfaceClass) || SingletonInterfaceHashKey.InterfaceClass == UInterface::StaticClass())
@@ -100,18 +100,17 @@ TScriptInterface<UInterface> USdSingletonSubsystem::K2_GetSingletonInterface(TSu
 			OutInterface = CachedObject;
 			OutObject = CachedObject;
 			return OutInterface;
-
 		}
 	}
 
 	if (SearchParams.bIncludeOnlyActors)
-	{	
+	{
 		TArray<AActor*> WorldActors;
-		const UWorld* SingletonWorld = GetWorld();
+		const UWorld*	SingletonWorld = GetWorld();
 
 		UGameplayStatics::GetAllActorsWithInterface(SingletonWorld, InInterfaceClass, WorldActors);
 		for (auto ActorRef : WorldActors)
-		{			
+		{
 			OutInterface.SetObject(ActorRef);
 			SingletonInterfaceCacheMap.Add(SingletonInterfaceHashKey, ActorRef);
 			OutInterface = ActorRef;
@@ -122,7 +121,7 @@ TScriptInterface<UInterface> USdSingletonSubsystem::K2_GetSingletonInterface(TSu
 	else
 	{
 
-		UObject* CheckOuter = nullptr;
+		UObject*  CheckOuter = nullptr;
 		UPackage* InsidePackage = nullptr;
 		for (FThreadSafeObjectIterator It; It; ++It)
 		{
@@ -201,10 +200,10 @@ AActor* USdSingletonSubsystem::K2_GetSingletonActor(TSubclassOf<AActor> Class, b
 		}
 	}
 
-	bool bActorFound = false;
+	bool			bActorFound = false;
 	TArray<AActor*> WorldActors;
-	AActor* BackupOption = nullptr;
-	
+	AActor*			BackupOption = nullptr;
+
 	const UWorld* SingletonWorld = GetWorld();
 
 	UGameplayStatics::GetAllActorsOfClass(SingletonWorld, Class, WorldActors);
@@ -213,11 +212,11 @@ AActor* USdSingletonSubsystem::K2_GetSingletonActor(TSubclassOf<AActor> Class, b
 		// this is for angelscript returning uninstantiated base default objects over world-spawned BP-derived objects
 		// because the .AS objects always seem to be available when calling GetActorsOfClass(), even if they're not in the world
 		// therefore, we iterate through all classes and prefer the deepest level of descendent
-		// 
+		//
 		// loop through actor classes
 		// check if root component is valid
 		// if iterated actor is a child actor class of backup option class, set backup option class
-		
+
 		if (!IsValid(BackupOption))
 		{
 			BackupOption = ActorRef;
@@ -234,16 +233,16 @@ AActor* USdSingletonSubsystem::K2_GetSingletonActor(TSubclassOf<AActor> Class, b
 		}
 		OutActor = ActorRef;
 		bActorFound = true;
-		break;		
+		break;
 	}
 
 	if (!(OutActor && IsValid(OutActor)))
 	{
-		if ((BackupOption && IsValid(BackupOption))) 
+		if ((BackupOption && IsValid(BackupOption)))
 		{
 			OutActor = BackupOption;
 			bActorFound = true;
-		}		
+		}
 	}
 
 	if (!bCreateIfMissing && !IsValid(OutActor))
@@ -262,7 +261,6 @@ AActor* USdSingletonSubsystem::K2_GetSingletonActor(TSubclassOf<AActor> Class, b
 	}
 
 	return OutActor;
-
 }
 
 

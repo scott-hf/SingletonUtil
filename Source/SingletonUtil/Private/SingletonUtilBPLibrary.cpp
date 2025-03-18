@@ -10,9 +10,8 @@
 DEFINE_LOG_CATEGORY(LogSingletonUtilBPLibrary);
 
 USingletonUtilBPLibrary::USingletonUtilBPLibrary(const FObjectInitializer& ObjectInitializer)
-: Super(ObjectInitializer)
+	: Super(ObjectInitializer)
 {
-
 }
 
 TScriptInterface<UInterface> USingletonUtilBPLibrary::USingletonUtilBPLibrary::K2_GetSingletonInterface(UObject* WorldContextObject, TSubclassOf<UInterface> InClass, UObject*& OutObject)
@@ -22,7 +21,7 @@ TScriptInterface<UInterface> USingletonUtilBPLibrary::USingletonUtilBPLibrary::K
 		UE_LOG(LogSingletonUtilBPLibrary, Log, TEXT("USingletonUtilBPLibrary::WorldContextObject Is not valid"));
 		return nullptr;
 	}
-	
+
 	UWorld* World = WorldContextObject->GetWorld();
 	if (!(World && IsValid(World)))
 	{
@@ -30,7 +29,7 @@ TScriptInterface<UInterface> USingletonUtilBPLibrary::USingletonUtilBPLibrary::K
 		return nullptr;
 	}
 
-	if (!(InClass && IsValid(InClass )))
+	if (!(InClass && IsValid(InClass)))
 	{
 		UE_LOG(LogSingletonUtilBPLibrary, Log, TEXT("USingletonUtilBPLibrary::Class Is not valid"));
 		return nullptr;
@@ -39,26 +38,26 @@ TScriptInterface<UInterface> USingletonUtilBPLibrary::USingletonUtilBPLibrary::K
 	if (IsValid(SingletonSubsystem))
 	{
 		FSD_SingletonSearchParams SearchParams;
-		auto FoundActor = SingletonSubsystem->K2_GetSingletonInterface(InClass, OutObject, SearchParams, false);
+		auto					  FoundActor = SingletonSubsystem->K2_GetSingletonInterface(InClass, OutObject, SearchParams, false);
 		if (OutObject && IsValid(OutObject))
 		{
 			return FoundActor;
 		}
-	}		
-	
-	UE_LOG(LogSingletonUtilBPLibrary, Log, TEXT("USingletonUtilBPLibrary::Could not get/create the requested singleton interface"));	
+	}
+
+	UE_LOG(LogSingletonUtilBPLibrary, Log, TEXT("USingletonUtilBPLibrary::Could not get/create the requested singleton interface"));
 	return nullptr;
 }
 
 
 AActor* USingletonUtilBPLibrary::K2_GetSingletonActor(UObject* WorldContextObject, TSubclassOf<AActor> Class, bool bCreateIfMissing)
-{	
+{
 	if (!(WorldContextObject && IsValid(WorldContextObject)))
 	{
 		UE_LOG(LogSingletonUtilBPLibrary, Log, TEXT("USingletonUtilBPLibrary::WorldContextObject Is not valid"));
 		return nullptr;
 	}
-	
+
 	UWorld* World = WorldContextObject->GetWorld();
 	if (!(World && IsValid(World)))
 	{
@@ -79,8 +78,8 @@ AActor* USingletonUtilBPLibrary::K2_GetSingletonActor(UObject* WorldContextObjec
 		{
 			return FoundActor;
 		}
-	}		
-	
-	UE_LOG(LogSingletonUtilBPLibrary, Log, TEXT("USingletonUtilBPLibrary::Could not get/create the requested singleton actor"));	
+	}
+
+	UE_LOG(LogSingletonUtilBPLibrary, Log, TEXT("USingletonUtilBPLibrary::Could not get/create the requested singleton actor"));
 	return nullptr;
 }

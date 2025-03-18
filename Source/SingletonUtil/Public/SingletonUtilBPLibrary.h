@@ -13,7 +13,6 @@ class USingletonUtilBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 public:
-	
 	/**
 	 * Retrieves a singleton actor of the specified class within the current world context.
 	 * Assumes only one instance of the actor class exists globally, or optionally creates one if missing.
@@ -28,8 +27,8 @@ public:
 	 * @return                     A pointer to the singleton actor instance, or nullptr if no matching actor was found
 	 *                             (and `bCreateIfMissing` was false).
 	 */
-	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Singleton Util", DisplayName = "Get Singleton Actor", meta = (WorldContext = "WorldContextObject",DeterminesOutputType = Class))
-		static AActor* K2_GetSingletonActor(UObject* WorldContextObject, TSubclassOf<AActor> Class, bool bCreateIfMissing);
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Singleton Util", DisplayName = "Get Singleton Actor", meta = (WorldContext = "WorldContextObject", DeterminesOutputType = Class))
+	static AActor* K2_GetSingletonActor(UObject* WorldContextObject, TSubclassOf<AActor> Class, bool bCreateIfMissing = false);
 
 	/**
 	 * Retrieves the singleton interface instance of a specified class. Assumes only one instance of that interface class exists.
@@ -45,8 +44,5 @@ public:
 	 *                         instance was found.
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Singleton Util", DisplayName = "Get Singleton Interface", meta = (WorldContext = "WorldContextObject", DeterminesOutputType = InterfaceClass))
-		static TScriptInterface<UInterface> K2_GetSingletonInterface(UObject* WorldContextObject, TSubclassOf<UInterface> InterfaceClass, UObject*& OutObject);
-
-		
-
+	static TScriptInterface<UInterface> K2_GetSingletonInterface(UObject* WorldContextObject, TSubclassOf<UInterface> InterfaceClass, UObject*& OutObject);
 };
