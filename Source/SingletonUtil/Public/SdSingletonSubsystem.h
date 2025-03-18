@@ -259,6 +259,9 @@ public:
 	TMap<TSubclassOf<UObject>, AActor*> SingletonActorCacheMap;
 
 	UPROPERTY()
+	TMap<TSubclassOf<UObject>, UActorComponent*> SingletonComponentCacheMap;
+
+	UPROPERTY()
 	TMap<FSD_SingletonInterfaceHashKey, UObject*> SingletonInterfaceCacheMap;
 
 	UPROPERTY()
@@ -300,6 +303,15 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "SingletonUtil", DisplayName = "GetSingletonActor", meta = (DeterminesOutputType = InClass))
 	AActor* K2_GetSingletonActor(TSubclassOf<AActor> InClass, bool bCreateIfMissing = false, bool bIgnoreCache = false);
+	
+	/**
+	 * Retrieves the singleton component instance of a specified class. Assumes only one component of that class exists.
+	 * @param InClass - The class of the singleton component to retrieve.
+	 * @param bCreateIfMissing - If true, creates the component if it doesn't already exist.
+	 * @return A pointer to the singleton component instance, or nullptr if not found/created.
+	 */
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "SingletonUtil", DisplayName = "GetSingletonComponent", meta = (DeterminesOutputType = InClass))
+	UActorComponent* K2_GetSingletonComponent(TSubclassOf<UActorComponent> InClass, bool bCreateIfMissing = true);
 
 	/**
 	 * Retrieves the singleton interface instance of a specified class. Assumes only one instance of that interface class exists.

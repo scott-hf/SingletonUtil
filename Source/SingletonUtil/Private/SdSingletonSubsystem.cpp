@@ -23,6 +23,7 @@ void USdSingletonSubsystem::ClearLookupCache()
 {
 	CacheMap.Empty();
 	SingletonActorCacheMap.Empty();
+	SingletonComponentCacheMap.Empty();
 	GlobalObjectRegistry.RegisteredObjects.Empty();
 	SingletonInterfaceCacheMap.Empty();
 }
@@ -182,6 +183,53 @@ TScriptInterface<UInterface> USdSingletonSubsystem::K2_GetSingletonInterface(TSu
 
 	return OutInterface;
 }
+
+
+UActorComponent* USdSingletonSubsystem::K2_GetSingletonComponent(TSubclassOf<UActorComponent> Class, bool bCreateIfMissing)
+{
+	UActorComponent* OutComponent = nullptr;
+	if (!IsValid(Class))
+	{
+		return OutComponent;
+	}
+
+	if (SingletonComponentCacheMap.Contains(Class))
+	{
+		UObject* CachedObject = SingletonComponentCacheMap[Class];
+		if (CachedObject && IsValid(CachedObject))
+		{
+			return SingletonComponentCacheMap[Class];
+		}
+	}
+
+	TArray<AActor*> WorldActors;
+
+	const UWorld* SingletonWorld = GetWorld();
+
+	UGameplayStatics::GetAllActorsOfClass(SingletonWorld, AActor::StaticClass(), WorldActors);
+	for (AActor* ActorRef : WorldActors)
+	{
+		UActorComponent* ActorComp = ActorRef->GetComponentByClass(Class);
+
+		if (ActorComp && IsValid(ActorComp))
+		{
+			OutComponent = ActorComp;
+			SingletonComponentCacheMap.Add(Class, OutComponent);
+			return OutComponent;
+		}
+	}
+
+	if (!IsValid(OutComponent) && bCreateIfMissing)
+	{
+		AActor* NewActor = GetWorld()->SpawnActor(AActor::StaticClass());
+		FTransform TempTransform;
+		OutComponent = NewActor->AddComponentByClass(Class, false, TempTransform, false);
+		SingletonComponentCacheMap.Add(Class, OutComponent);
+	}
+
+	return OutComponent;
+}
+
 
 AActor* USdSingletonSubsystem::K2_GetSingletonActor(TSubclassOf<AActor> Class, bool bCreateIfMissing, bool bIgnoreCache)
 {

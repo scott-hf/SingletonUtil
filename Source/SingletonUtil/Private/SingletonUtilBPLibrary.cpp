@@ -83,3 +83,42 @@ AActor* USingletonUtilBPLibrary::K2_GetSingletonActor(UObject* WorldContextObjec
 	UE_LOG(LogSingletonUtilBPLibrary, Log, TEXT("USingletonUtilBPLibrary::Could not get/create the requested singleton actor"));
 	return nullptr;
 }
+
+
+
+
+UActorComponent* USingletonUtilBPLibrary::K2_GetSingletonComponent(UObject* WorldContextObject, TSubclassOf<UActorComponent> Class, bool bCreateIfMissing)
+{
+	if (!(WorldContextObject && IsValid(WorldContextObject)))
+	{
+		UE_LOG(LogSingletonUtilBPLibrary, Log, TEXT("USingletonUtilBPLibrary::WorldContextObject Is not valid"));
+		return nullptr;
+	}
+
+	UWorld* World = WorldContextObject->GetWorld();
+	if (!(World && IsValid(World)))
+	{
+		UE_LOG(LogSingletonUtilBPLibrary, Log, TEXT("USingletonUtilBPLibrary::World Is not valid"));
+		return nullptr;
+	}
+
+	if (!(Class && IsValid(Class)))
+	{
+		UE_LOG(LogSingletonUtilBPLibrary, Log, TEXT("USingletonUtilBPLibrary::Class Is not valid"));
+		return nullptr;
+	}
+
+	USdSingletonSubsystem* SingletonSubsystem = UWorld::GetSubsystem<USdSingletonSubsystem>(World);
+	if (IsValid(SingletonSubsystem))
+	{
+		auto FoundComponent = SingletonSubsystem->K2_GetSingletonComponent(Class, bCreateIfMissing);
+		if (FoundComponent && IsValid(FoundComponent))
+		{
+			return FoundComponent;
+		}
+	}
+
+	UE_LOG(LogSingletonUtilBPLibrary, Log, TEXT("USingletonUtilBPLibrary::Could not get/create the requested singleton Component"));
+	return nullptr;
+}
+
