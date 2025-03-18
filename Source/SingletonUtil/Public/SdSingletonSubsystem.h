@@ -133,7 +133,10 @@ public:
 
 	// Constructor with InterfaceClass and SingletonSearchParams
 	FSD_SingletonInterfaceHashKey(TSubclassOf<UInterface> InInterfaceClass, const FSD_SingletonSearchParams& InSingletonSearchParams)
-		: InterfaceClass(InInterfaceClass), SingletonSearchParams(InSingletonSearchParams) {}
+		: InterfaceClass(InInterfaceClass)
+	{
+		SingletonSearchParams = InSingletonSearchParams;
+	}
 
 	// Equality operator
 	friend bool operator==(const FSD_SingletonInterfaceHashKey& A, const FSD_SingletonInterfaceHashKey& B)
