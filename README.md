@@ -1,7 +1,7 @@
 
-# SD Singleton Util - Destroyer of hard references
+# SD Singleton Util - Destroyer of Hard References
 
-A blueprint-exposed, C++ singleton utility **plugin** for **Unreal Engine**, designed to cache and retrieve singleton instances of actors, components interfaces, and global objects.
+A blueprint-exposed, C++ singleton utility **plugin** for **Unreal Engine**, designed to cache and retrieve singleton instances of actors, components, interfaces, and global objects.
 
 ## TLDR
 - Stop calling "get actor of class" and caching it as a variable
@@ -9,27 +9,26 @@ A blueprint-exposed, C++ singleton utility **plugin** for **Unreal Engine**, des
 
  ![singleton util gif v3](https://github.com/user-attachments/assets/96750a36-bbe2-4f46-8d18-a25f209833f6)
 
-
 ## Intent
 - De-couple more, cache easier, and remove clutter from variables in your blueprints - while remaining performant
-- Call singleton functions for any actor, component, or interfaces without having to worry about whether it exists. it can auto-create classes where needed
+- Call singleton functions for any actor, component, or interface
+- For actors and components, auto-create the singleton class if it doesn't exist
 
 ## Usage
 
 ### 1. Get Singleton Actor
 Retrieve a singleton actor
-- `MyActorClass`: The actor class to retrieve as a singleton.
+- `ActorClass`: The actor class to retrieve
 - `bCreateIfMissing`: If `true`, creates a new instance if none exists.
-- 
+
 ### 2. Get Singleton Component
 Retrieve a singleton component
-- `CompnoentClass`: The component class to retrieve as a singleton.
+- `ComponentClass`: The component class to retrieve
 - `bCreateIfMissing`: If `true`, creates a new instance if none exists.
 
 ### 3. Get Singleton Interface
 Retrieve a singleton instance of a specific interface.
-- `MyInterfaceClass`: Interface class to retrieve as a singleton.
-- `OutObject`: Receives the object implementing the interface.
+- `InterfaceClass`: Interface class to retrieve
 
 ## Installation
 
